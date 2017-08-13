@@ -23,7 +23,8 @@
     		foreach ($project_meta_model as $key => $value) {
   				if ($value->key == 'role') {
 
-					$im1=Yii::getAlias('@vendor').'/gamantha/pao/project/views/project/_'.$value->value.'.php';
+					//$im1=Yii::getAlias('@vendor').'/gamantha/pao/project/views/project/_'.$value->value.'.php';
+					$im1=Yii::getAlias('@vendor').'/gamantha/pao-project/views/project/_'.$value->value.'.php';
 
 					if (file_exists($im1)) {
 					  					echo $this->render('_'.$value->value, [
