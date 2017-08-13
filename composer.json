@@ -1,0 +1,21 @@
+{
+    "name": "gamantha/project",
+    "description": "project extension for gamantha pao",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Reno Wijoyo",
+            "email": "renowijoyo@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "vendor\\gamantha\\pao\\project\\": ""
+        }
+    }
+}
