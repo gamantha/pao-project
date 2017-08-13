@@ -7,7 +7,7 @@ Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-Either run
+Either run --> nap
 
 ```
 php composer.phar require --prefer-dist gamantha/project "*"
