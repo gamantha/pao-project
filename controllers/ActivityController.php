@@ -3,8 +3,8 @@
 namespace vendor\gamantha\pao\project\controllers;
 
 use Yii;
-use vendor\gamantha\pao\project\models\Activity;
-use vendor\gamantha\pao\project\models\ActivitySearch;
+use vendor\gamantha\pao\project\models\ProjectActivity;
+use vendor\gamantha\pao\project\models\ProjectActivitySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class ActivityController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ActivitySearch();
+        $searchModel = new ProjectActivitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,7 +63,7 @@ class ActivityController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Activity();
+        $model = new ProjectActivity();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -115,7 +115,7 @@ class ActivityController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Activity::findOne($id)) !== null) {
+        if (($model = ProjectActivity::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

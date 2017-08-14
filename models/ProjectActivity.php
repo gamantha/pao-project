@@ -3,10 +3,9 @@
 namespace vendor\gamantha\pao\project\models;
 
 use Yii;
-use common\modules\profile\models\Profile;
 
 /**
- * This is the model class for table "activity".
+ * This is the model class for table "project_activity".
  *
  * @property integer $id
  * @property integer $project_id
@@ -16,16 +15,16 @@ use common\modules\profile\models\Profile;
  * @property string $modified_at
  *
  * @property Project $project
- * @property ActivityMeta[] $activityMetas
+ * @property ProjectActivityMeta[] $projectActivityMetas
  */
-class Activity extends \yii\db\ActiveRecord
+class ProjectActivity extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'activity';
+        return 'project_activity';
     }
 
     /**
@@ -67,17 +66,17 @@ class Activity extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getActivityMetas()
+    public function getProjectActivityMetas()
     {
-        return $this->hasMany(ActivityMeta::className(), ['activity_id' => 'id']);
+        return $this->hasMany(ProjectActivityMeta::className(), ['project_activity_id' => 'id']);
     }
 
     /**
      * @inheritdoc
-     * @return ActivityQuery the active query used by this AR class.
+     * @return ProjectActivityQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new ActivityQuery(get_called_class());
+        return new ProjectActivityQuery(get_called_class());
     }
 }

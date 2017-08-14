@@ -1,8 +1,8 @@
 <?php
 use vendor\gamantha\pao\project\models\Project;
 use vendor\gamantha\pao\project\models\ProjectMeta;
-use vendor\gamantha\pao\project\models\Activity;
-use vendor\gamantha\pao\project\models\ActivityMeta;
+use vendor\gamantha\pao\project\models\ProjectActivity;
+use vendor\gamantha\pao\project\models\ProjectActivityMeta;
 use common\modules\profile\models\Profile;
 use common\modules\profile\models\ProfileMeta;
 use yii\data\ActiveDataProvider;
@@ -25,16 +25,16 @@ apa yang mau dilihat asesor disini?
 
 $profile_model = Profile::find()->andWhere(['user_id' => Yii::$app->user->id])->One();
 
-            $distinct_assessor_activities_model = ActivityMeta::find()
+            $distinct_assessor_activities_model = ProjectActivityMeta::find()
                 ->andWhere(['type' => 'general'])
                 ->andWhere(['key' => 'assessor'])
                 ->andWhere(['value' => $profile_model->id])
                 ->asArray()->All();
 
-            $assessor_activity_ids = ArrayHelper::getColumn($distinct_assessor_activities_model, 'activity_id');
+            $assessor_activity_ids = ArrayHelper::getColumn($distinct_assessor_activities_model, 'project_activity_id');
 
 
-            $activityQuery = Activity::find()
+            $activityQuery = ProjectActivity::find()
             ->andWhere(['in','id',$assessor_activity_ids]);
 
 			$activityDataProvider = new ActiveDataProvider([

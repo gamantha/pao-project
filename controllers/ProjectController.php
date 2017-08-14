@@ -4,8 +4,8 @@ namespace vendor\gamantha\pao\project\controllers;
 
 use vendor\gamantha\pao\project\models\Project;
 use vendor\gamantha\pao\project\models\ProjectMeta;
-use vendor\gamantha\pao\project\models\Activity;
-use vendor\gamantha\pao\project\models\ActivityMeta;
+use vendor\gamantha\pao\project\models\ProjectActivity;
+use vendor\gamantha\pao\project\models\ProjectActivityMeta;
 use common\modules\profile\models\Profile;
 use common\modules\profile\models\ProfileMeta;
 

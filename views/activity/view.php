@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-use vendor\gamantha\pao\project\models\Activity;
-use vendor\gamantha\pao\project\models\ActivityMeta;
+use vendor\gamantha\pao\project\models\ProjectActivity;
+use vendor\gamantha\pao\project\models\ProjectActivityMeta;
 use common\modules\profile\models\Profile;
 
 
@@ -39,12 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => 'Assessee Name [FROM ACTIVITY_META]',
                 'value' => function($data){
-                    $activity_assessee_model = ActivityMeta::find()
-                    ->andWhere(['activity_id' => $data->id])
+                    $activity_assessee_model = ProjectActivityMeta::find()
+                    ->andWhere(['project_activity_id' => $data->id])
                     ->andWhere(['type' => 'general'])
                     ->andWhere(['key' => 'assessee'])->One();
+                    if (null !== $activity_assessee_model) {
                     $assessee_model = Profile::findOne($activity_assessee_model->value);
                     return $assessee_model->first_name;
+                    } else {
+                        return 'no profile set for this assessee';
+                    }
                 }
             ],
             [

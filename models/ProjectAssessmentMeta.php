@@ -5,9 +5,9 @@ namespace vendor\gamantha\pao\project\models;
 use Yii;
 
 /**
- * This is the model class for table "activity_meta".
+ * This is the model class for table "project_assessment_meta".
  *
- * @property integer $activity_id
+ * @property integer $project_assessment_id
  * @property string $type
  * @property string $key
  * @property string $value
@@ -15,16 +15,16 @@ use Yii;
  * @property string $attribute_2
  * @property string $attribute_3
  *
- * @property Activity $activity
+ * @property ProjectAssessment $projectAssessment
  */
-class ActivityMeta extends \yii\db\ActiveRecord
+class ProjectAssessmentMeta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'activity_meta';
+        return 'project_assessment_meta';
     }
 
     /**
@@ -33,10 +33,10 @@ class ActivityMeta extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['activity_id', 'type', 'key', 'value'], 'required'],
-            [['activity_id'], 'integer'],
+            [['project_assessment_id', 'type', 'key', 'value'], 'required'],
+            [['project_assessment_id'], 'integer'],
             [['type', 'key', 'value', 'attribute_1', 'attribute_2', 'attribute_3'], 'string', 'max' => 255],
-            [['activity_id'], 'exist', 'skipOnError' => true, 'targetClass' => Activity::className(), 'targetAttribute' => ['activity_id' => 'id']],
+            [['project_assessment_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProjectAssessment::className(), 'targetAttribute' => ['project_assessment_id' => 'id']],
         ];
     }
 
@@ -46,7 +46,7 @@ class ActivityMeta extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'activity_id' => Yii::t('app', 'Activity ID'),
+            'project_assessment_id' => Yii::t('app', 'Project Assessment ID'),
             'type' => Yii::t('app', 'Type'),
             'key' => Yii::t('app', 'Key'),
             'value' => Yii::t('app', 'Value'),
@@ -59,17 +59,17 @@ class ActivityMeta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getActivity()
+    public function getProjectAssessment()
     {
-        return $this->hasOne(Activity::className(), ['id' => 'activity_id']);
+        return $this->hasOne(ProjectAssessment::className(), ['id' => 'project_assessment_id']);
     }
 
     /**
      * @inheritdoc
-     * @return ActivityMetaQuery the active query used by this AR class.
+     * @return ProjectAssessmentMetaQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new ActivityMetaQuery(get_called_class());
+        return new ProjectAssessmentMetaQuery(get_called_class());
     }
 }

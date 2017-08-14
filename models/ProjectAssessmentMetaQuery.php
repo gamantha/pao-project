@@ -3,11 +3,11 @@
 namespace vendor\gamantha\pao\project\models;
 
 /**
- * This is the ActiveQuery class for [[Activity]].
+ * This is the ActiveQuery class for [[ProjectAssessmentMeta]].
  *
- * @see Activity
+ * @see ProjectAssessmentMeta
  */
-class ActivityQuery extends \yii\db\ActiveQuery
+class ProjectAssessmentMetaQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class ActivityQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Activity[]|array
+     * @return ProjectAssessmentMeta[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class ActivityQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Activity|array|null
+     * @return ProjectAssessmentMeta|array|null
      */
     public function one($db = null)
     {
