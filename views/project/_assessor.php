@@ -35,6 +35,7 @@ $profile_model = Profile::find()->andWhere(['user_id' => Yii::$app->user->id])->
 
 
             $activityQuery = ProjectActivity::find()
+            ->andWhere(['project_id' => $_GET['id']])
             ->andWhere(['in','id',$assessor_activity_ids]);
 
 			$activityDataProvider = new ActiveDataProvider([
