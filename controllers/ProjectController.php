@@ -34,13 +34,14 @@ class ProjectController extends \yii\web\Controller
 
     public function actionDashboard($id)
     {
-    	$profile_model = Profile::find()->andWhere(['user_id' => Yii::$app->user->id])->One();
+    	$profile_model = Yii::$app->user->identity->profile->id;
+        //Profile::find()->andWhere(['user_id' => Yii::$app->user->id])->One();
         
 
     	if (null !== $profile_model) {
     		$project_meta_model = ProfileMeta::find()
     			->andWhere(['type' => 'project'])
-                ->andWhere(['profile_id' => $profile_model->id])
+                ->andWhere(['profile_id' => Yii::$app->user->identity->profile->id])
     			->andWhere(['attribute_1' => $id])
     			->All();
             if(sizeof($project_meta_model) > 0 ) {
@@ -59,12 +60,13 @@ class ProjectController extends \yii\web\Controller
 
     public function actionSelect()
     {
-            $profile_model = Profile::find()->andWhere(['user_id' => Yii::$app->user->id])->One();
+            $profile_model = Yii::$app->user->identity->profile->id;
+            //Profile::find()->andWhere(['user_id' => Yii::$app->user->id])->One();
             if(null !== $profile_model)
             {
             $project_meta_models = ProfileMeta::find()
             ->andWhere(['type' => 'project'])
-            ->andWhere(['profile_id' => $profile_model->id])->groupBy(['attribute_1'])->asArray()->All();
+            ->andWhere(['profile_id' => Yii::$app->user->identity->profile->id])->groupBy(['attribute_1'])->asArray()->All();
 
             $projects_ids = ArrayHelper::getColumn($project_meta_models, 'attribute_1');
 

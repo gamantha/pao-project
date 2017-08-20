@@ -6,7 +6,7 @@ use yii\helpers\HtmlPurifier;
 
 <?php
 
-echo Html::a($model->id, ['project/dashboard', 'id' => $model->id], ['class' => 'btn btn-lg btn-success']);
+echo Html::a($model->name, ['project/dashboard', 'id' => $model->id], ['class' => 'btn btn-lg btn-success']);
 
 ?>
 </div>
