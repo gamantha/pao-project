@@ -11,7 +11,7 @@
 	<?php
 		echo '<hr/>ROLE : ';
     		foreach ($project_meta_model as $key => $value) {
-  				if ($value->key == 'role') {
+  				if ($value->type == 'project-role') {
   					echo $value->value . ', ';
   				}
     		}
@@ -21,7 +21,7 @@
 	<?php
 		echo '<hr/>PAGES : <br/>';
     		foreach ($project_meta_model as $key => $value) {
-  				if ($value->key == 'role') {
+  				if ($value->type == 'project-role') {
 
 					//$im1=Yii::getAlias('@vendor').'/gamantha/pao/project/views/project/_'.$value->value.'.php';
 					$im1=Yii::getAlias('@vendor').'/gamantha/pao-project/views/project/_'.$value->value.'.php';

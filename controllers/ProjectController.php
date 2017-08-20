@@ -40,9 +40,9 @@ class ProjectController extends \yii\web\Controller
 
     	if (null !== $profile_model) {
     		$project_meta_model = ProfileMeta::find()
-    			->andWhere(['type' => 'project'])
+    			->andWhere(['type' => 'project-role'])
                 ->andWhere(['profile_id' => Yii::$app->user->identity->profile->id])
-    			->andWhere(['attribute_1' => $id])
+    			->andWhere(['key' => $id])
     			->All();
             if(sizeof($project_meta_model) > 0 ) {
             
@@ -65,10 +65,11 @@ class ProjectController extends \yii\web\Controller
             if(null !== $profile_model)
             {
             $project_meta_models = ProfileMeta::find()
-            ->andWhere(['type' => 'project'])
-            ->andWhere(['profile_id' => Yii::$app->user->identity->profile->id])->groupBy(['attribute_1'])->asArray()->All();
+            ->andWhere(['type' => 'project-role'])
+            ->andWhere(['profile_id' => Yii::$app->user->identity->profile->id])
+            ->groupBy(['key'])->asArray()->All();
 
-            $projects_ids = ArrayHelper::getColumn($project_meta_models, 'attribute_1');
+            $projects_ids = ArrayHelper::getColumn($project_meta_models, 'key');
 
             $project_query = Project::find()
             ->andWhere(['in','id',$projects_ids]);
